@@ -1,0 +1,253 @@
+'Force the explicit delcaration of variables
+Option Explicit
+
+
+Private Sub exit_Click()
+   ' AllowClose "close"
+    DoCmd.CloseDatabase
+End Sub
+
+
+
+
+Private Sub fileIn_Click()
+
+    'Declare the variables
+    Dim MyPath As String
+    Dim MyFile As String
+    Dim LatestFile As String
+    Dim LatestDate As Date
+    Dim LMD As Date
+
+    'Specify the path to the folder
+    MyPath = "C:\Users\Eric\Desktop\SEND OUT"
+
+    'Make sure that the path ends in a backslash
+    If Right(MyPath, 1) <> "\" Then MyPath = MyPath & "\"
+
+    'Get the first txt file from the folder
+    MyFile = Dir(MyPath & "*.txt", vbNormal)
+
+    'If no files were found, exit the sub
+    If Len(MyFile) = 0 Then
+        MsgBox "No files found in Bowh folder", vbExclamation
+        Exit Sub
+    End If
+
+    'Loop through each txt file in the folder
+    Do While Len(MyFile) > 0
+
+        'Assign the date/time of the current file to a variable
+        LMD = FileDateTime(MyPath & MyFile)
+
+        'If the date/time of the current file is greater than the latest
+        'recorded date, assign its filename and date/time to variables
+        If LMD > LatestDate Then
+            LatestFile = MyFile
+            LatestDate = LMD
+        End If
+
+        'Get the next Excel file from the folder
+        MyFile = Dir
+
+
+    Loop
+
+   'Test with a time stamp
+    FileCopy MyPath & LatestFile, "C:\Users\Eric\Desktop\SHOE WAREHOUSE\INV texts\IN\Inv" & Format(Now, " mm-dd-yy") & ".txt"
+
+    'Overwrite to the Bowh folder
+    FileCopy MyPath & LatestFile, "C:\Bowh\Inv.txt"
+
+    MsgBox " Moved to the IN folder, Complete!", vbExclamation
+
+     'this is the original one that destination has a name change
+    'Name "MyPath & LatestFile" As "C:\Users\Eric\Desktop\Batch\PDT BATCH\DestinationFolder\fileNEW.txt"
+End Sub
+
+Private Sub fileOut_Click()
+
+    'Declare the variables
+    Dim MyPath As String
+    Dim MyFile As String
+    Dim LatestFile As String
+    Dim LatestDate As Date
+    Dim LMD As Date
+
+    'Specify the path to the folder
+    MyPath = "C:\Users\Eric\Desktop\SEND OUT"
+
+    'Make sure that the path ends in a backslash
+    If Right(MyPath, 1) <> "\" Then MyPath = MyPath & "\"
+
+    'Get the first txt file from the folder
+    MyFile = Dir(MyPath & "*.txt", vbNormal)
+
+    'If no files were found, exit the sub
+    If Len(MyFile) = 0 Then
+        MsgBox "No files found in Bowh folder", vbExclamation
+        Exit Sub
+    End If
+
+    'Loop through each txt file in the folder
+    Do While Len(MyFile) > 0
+
+        'Assign the date/time of the current file to a variable
+        LMD = FileDateTime(MyPath & MyFile)
+
+        'If the date/time of the current file is greater than the latest
+        'recorded date, assign its filename and date/time to variables
+        If LMD > LatestDate Then
+            LatestFile = MyFile
+            LatestDate = LMD
+        End If
+
+        'Get the next Excel file from the folder
+        MyFile = Dir
+
+
+    Loop
+
+   'Test with a time stamp
+    FileCopy MyPath & LatestFile, "C:\Users\Eric\Desktop\SHOE WAREHOUSE\INV texts\OUT\Inv" & Format(Now, " mm-dd-yy") & ".txt"
+
+    'Overwrite to the Bowh folder
+    FileCopy MyPath & LatestFile, "C:\Bowh\Inv.txt"
+
+
+    MsgBox " Moved to the OUT folder, Complete! ", vbExclamation
+
+     'this is the original one that destination has a name change
+    'Name "MyPath & LatestFile" As "C:\Users\Eric\Desktop\Batch\PDT BATCH\DestinationFolder\fileNEW.txt"
+End Sub
+
+Public Sub fileReplace_Click()
+
+
+
+    'Declare the variables
+    Dim MyPath As String
+    Dim MyFile As String
+    Dim LatestFile As String
+    Dim LatestDate As Date
+    Dim LMD As Date
+
+    'Specify the path to the folder
+    MyPath = "C:\Users\Eric\Desktop\SEND OUT"
+
+    'Make sure that the path ends in a backslash
+    If Right(MyPath, 1) <> "\" Then MyPath = MyPath & "\"
+
+    'Get the first txt file from the folder
+    MyFile = Dir(MyPath & "*.txt", vbNormal)
+
+    'If no files were found, exit the sub
+    If Len(MyFile) = 0 Then
+        MsgBox "No files found in Bowh folder", vbExclamation
+        Exit Sub
+    End If
+
+    'Loop through each txt file in the folder
+    Do While Len(MyFile) > 0
+
+        'Assign the date/time of the current file to a variable
+        LMD = FileDateTime(MyPath & MyFile)
+
+        'If the date/time of the current file is greater than the latest
+        'recorded date, assign its filename and date/time to variables
+        If LMD > LatestDate Then
+            LatestFile = MyFile
+            LatestDate = LMD
+        End If
+
+        'Get the next Excel file from the folder
+        MyFile = Dir
+
+
+    Loop
+
+   'Test with a time stamp
+    FileCopy MyPath & LatestFile, "C:\Users\Eric\Desktop\SHOE WAREHOUSE\INV texts\REPLACED\Inv" & Format(Now, " mm-dd-yy") & ".txt"
+
+    'Overwrite to the Bowh folder
+    FileCopy MyPath & LatestFile, "C:\Bowh\Inv.txt"
+
+
+    MsgBox "Replace Operation Complete", vbExclamation
+
+     'this is the original one that destination has a name change
+    'Name "MyPath & LatestFile" As "C:\Users\Eric\Desktop\Batch\PDT BATCH\DestinationFolder\fileNEW.txt"
+
+
+
+End Sub
+
+
+Private Sub fileStorage_Click()
+'Declare the variables
+    Dim MyPath As String
+    Dim MyFile As String
+    Dim LatestFile As String
+    Dim LatestDate As Date
+    Dim LMD As Date
+
+    'Specify the path to the folder
+    MyPath = "C:\Users\Eric\Desktop\SEND OUT"
+
+    'Make sure that the path ends in a backslash
+    If Right(MyPath, 1) <> "\" Then MyPath = MyPath & "\"
+
+    'Get the first txt file from the folder
+    MyFile = Dir(MyPath & "*.txt", vbNormal)
+
+    'If no files were found, exit the sub
+    If Len(MyFile) = 0 Then
+        MsgBox "No files found in Bowh folder", vbExclamation
+        Exit Sub
+    End If
+
+    'Loop through each txt file in the folder
+    Do While Len(MyFile) > 0
+
+        'Assign the date/time of the current file to a variable
+        LMD = FileDateTime(MyPath & MyFile)
+
+        'If the date/time of the current file is greater than the latest
+        'recorded date, assign its filename and date/time to variables
+        If LMD > LatestDate Then
+            LatestFile = MyFile
+            LatestDate = LMD
+        End If
+
+        'Get the next Excel file from the folder
+        MyFile = Dir
+
+
+    Loop
+
+   'Test with a time stamp
+    FileCopy MyPath & LatestFile, "C:\Users\Eric\Desktop\STORAGE\Inv.txt" & Format(Now, " mm-dd-yy") & ".txt"
+
+
+
+    MsgBox "Moved to Storage On the Desktop ", vbExclamation
+
+     'this is the original one that destination has a name change
+    'Name "MyPath & LatestFile" As "C:\Users\Eric\Desktop\Batch\PDT BATCH\DestinationFolder\fileNEW.txt"
+
+End Sub
+
+'this is to take away the ribbon
+Private Sub Form_Load()
+    DoCmd.ShowToolbar "Ribbon", acToolbarNo
+
+
+End Sub
+'this is to change the size and postion of form
+Private Sub Form_Open(Cancel As Integer)
+
+DoCmd.MoveSize 7000, 3000, 6000, 6000
+
+End Sub
+
+

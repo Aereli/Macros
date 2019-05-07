@@ -1,0 +1,43 @@
+Sub Edi_Extract()
+
+Dim x As Workbook
+Dim y As Workbook
+Dim vals As Variant
+
+Set x = Workbooks.Open("C:\Users\Eric\Desktop\edi_Extract.xlsx")
+Set y = Workbooks.Open("C:\Users\Eric\Desktop\Edi_Incoming_Test.xlsx")
+'
+'For i = 1 To 1000
+'    Range("A" & i).Copy Range("B1")
+'    Range("C1").Copy
+'    Range("D" & i).PasteSpecial Paste:=xlPasteValues
+    
+    x.Sheets("Open").Range("A1:I6").Copy
+    
+    y.Sheets("Sheet1").Range("A1:I6").PasteSpecial
+    
+    x.Close
+    
+
+End Sub
+
+------------------------------------------------------------------------------------
+this copies but does not overwrite/add
+Option Explicit
+
+Sub Edi_Extract()
+
+Dim x As Workbook
+Dim y As Workbook
+Dim vals As Variant
+Dim i As Long
+
+Set x = Workbooks.Open("C:\Users\Eric\Desktop\edi_Extract.xlsx")
+Set y = Workbooks.Open("C:\Users\Eric\Desktop\Edi_Incoming_Test.xlsx")
+
+    x.Sheets("Open").Range("A2:I99").Copy
+    y.Sheets("Sheet1").Range("A1").End(xlUp).Offset(1, 0).PasteSpecial
+
+x.Close
+End Sub
+

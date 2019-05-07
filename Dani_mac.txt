@@ -1,0 +1,34 @@
+Sub OpenTextFile()
+
+ Dim FilePath As String
+
+'this is the path you have to change
+FilePath = "C:\Users\Eric\Desktop\Daniel\WIP_DATA.txt"
+ 
+ Open FilePath For Input As #1
+ 
+    row_number = 0
+     
+'Until end of the file line
+Do Until EOF(1)
+
+Line Input #1, LineFromFile
+LineItems = Split(LineFromFile, ",")
+
+
+'Columns("A:H").EntireColumn.AutoFit
+
+ActiveCell.Offset(row_number, 0).Value = LineItems(0)
+ActiveCell.Offset(row_number, 1).Value = LineItems(1)
+ActiveCell.Offset(row_number, 2).Value = LineItems(2)
+ActiveCell.Offset(row_number, 3).Value = LineItems(3)
+ActiveCell.Offset(row_number, 4).Value = LineItems(4)
+ActiveCell.Offset(row_number, 5).Value = LineItems(5)
+ActiveCell.Offset(row_number, 6).Value = LineItems(6)
+ActiveCell.Offset(row_number, 7).Value = LineItems(7)
+
+row_number = row_number + 1
+
+Loop
+Close #1
+End Sub

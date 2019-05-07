@@ -1,0 +1,60 @@
+Sub ExtractHL()
+Dim HL As Hyperlink
+For Each HL In ActiveSheet.Hyperlinks
+HL.Range.Offset(0, 1).Value = HL.Address
+Next
+End Sub
+
+****************************************************************************
+
+'this is a function 
+= (BinaryContent as binary) as text=>
+
+'second
+"data:image/jpeg;base64, " & [Content]
+
+'this is the new column data
+Binary.ToText([Content], BinaryEncoding.Base64)
+
+****************************************************************************
+
+Sub DeleteAllPics()
+Dim Pic As Object
+For Each Pic In ActiveSheet.Pictures
+Pic.Delete
+Next Pic
+End Sub
+
+****************************************************************************
+
+Steps to setting Url in PowerQuery
+
+change type: to Text
+
+add custom column: Text.Upper(Text.Trim(Text.Middle([URL], Text.PositionOf([URL], "/", Occurrence.Last)+1, Text.PositionOf([URL], ".", Occurrence.Last)-Text.PositionOf([URL], "/", Occurrence.Last)-1)))
+//change URL with column name
+
+remove duplicates
+
+replace content: www.dropbox  To: dl.dropboxusercontent
+
+replace value: ?dl=0  To: 
+
+Set column to: View as Image URL 
+
+****************************************************************************
+Delete odd/even columns
+
+=MOD(ROW(),2)
+
+****************************************************************************
+Creating URL
+
+copy Dropbox link
+right clikc folder and copy Dropbox link
+open in incognito mode
+copy paste onto excel and clean up
+
+
+
+

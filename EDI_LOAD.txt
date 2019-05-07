@@ -1,0 +1,22 @@
+Option Explicit
+
+Public Sub Worksheet_Change(ByVal Target As Range)
+
+    'MsgBox "edi : " & target.Address(0, 0)
+    
+    Debug.Print "New Edi in range:  " & Target.Address(0, 0)
+    
+Application.EnableEvents = False
+        Target.Copy Range("H5")
+        Range("H10").Value = Date
+Application.EnableEvents = True
+
+
+
+'Copy Range("H5")
+    
+End Sub
+
+
+
+
